@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bricks! - Home</title>
+    <style>
+        /* Reset & Fontes Clássicas dos anos 2010 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Verdana, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #e3e3e3;
+            color: #222;
+            font-size: 12px;
+        }
+
+        a {
+            color: #0055b3;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 1. Header Principal - AZUL CLÁSSICO */
+        .top-nav {
+            background: linear-gradient(to bottom, #0055b3 0%, #003b80 100%);
+            height: 44px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            border-bottom: 2px solid #002554;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Logo Bricks! Estilizado em 3D com CSS */
+        .logo-bricks {
+            font-size: 22px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 
+                -2px -2px 0 #d32f2f,  
+                 2px -2px 0 #d32f2f,
+                -2px  2px 0 #d32f2f,
+                 2px  2px 0 #d32f2f,
+                 3px  4px 0px #8b0000;
+            letter-spacing: 1px;
+            font-style: italic;
+            cursor: pointer;
+        }
+
+        .main-menu {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .main-menu a {
+            color: #fff;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .search-box input {
+            padding: 3px 6px;
+            border: 1px solid #002554;
+            border-radius: 2px;
+            font-size: 11px;
+            width: 160px;
+        }
+
+        .user-stats {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+        }
+
+        /* Moedas Clássicas (B$ e TIX) */
+        .currency {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .currency.bbucks { color: #5cdb5c; }
+        .currency.tickets { color: #ffd700; }
+
+        /* 2. Sub-menu de Navegação */
+        .sub-nav {
+            background-color: #1e3a5f;
+            padding: 6px 15px;
+            border-bottom: 2px solid #132640;
+        }
+
+        .sub-menu {
+            display: flex;
+            list-style: none;
+            gap: 18px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .sub-menu a {
+            color: #e0e0e0;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .sub-menu a:hover {
+            color: #ffffff;
+        }
+
+        /* Container Conteúdo Principal */
+        .container {
+            max-width: 960px;
+            margin: 15px auto;
+            background: #fff;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .greeting {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 6px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 15px;
+        }
+
+        /* Painéis Retrô */
+        .panel-box {
+            border: 1px solid #cccccc;
+            border-radius: 3px;
+            background: #fafafa;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+            padding: 6px 10px;
+            font-weight: bold;
+            font-size: 12px;
+            border-bottom: 1px solid #ccc;
+            color: #444;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .panel-body {
+            padding: 10px;
+        }
+
+        /* Render 3D do Avatar (Placeholder) */
+        .avatar-frame {
+            background: #eef2f5;
+            border: 1px solid #d0d7de;
+            border-radius: 3px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        .avatar-placeholder {
+            width: 110px;
+            height: 160px;
+            background: #3498db;
+            position: relative;
+            border-radius: 4px;
+            box-shadow: 0 4px 0 #1d6fa5;
+        }
+
+        .avatar-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -38px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: #f1c40f;
+            border-radius: 50%;
+            border: 2px solid #d4ac0d;
+        }
+
+        /* Botão "JOGAR" Verde Reluzente */
+        .btn-play {
+            background: linear-gradient(to bottom, #5cb85c 0%, #4cae4c 100%);
+            border: 1px solid #3e8e41;
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+            padding: 6px 16px;
+            border-radius: 3px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 2px 3px rgba(0,0,0,0.2);
+            text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        .btn-play:hover {
+            background: linear-gradient(to bottom, #4cae4c 0%, #449d44 100%);
+        }
+
+        .btn-classic {
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+            border: 1px solid #adadad;
+            padding: 4px 10px;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .game-item {
+            display: flex;
+            gap: 12px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 8px;
+            border-radius: 3px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .game-thumb {
+            width: 110px;
+            height: 65px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .game-stats {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 11px;
+            margin: 3px 0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 11px;
+            color: #777;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA SUPERIOR (AGORA EM AZUL CLÁSSICO) -->
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="logo-bricks">BRICKS!</div>
+            <ul class="main-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Catalog</a></li>
+                <li><a href="#">Develop</a></li>
+                <li><a href="#">Forum</a></li>
+            </ul>
+        </div>
+        
+        <div class="user-stats">
+            <div class="search-box">
+                <input type="text" placeholder="Pesquisar...">
+            </div>
+            <span>Olá, <strong>Jogador123</strong></span>
+            <span class="currency bbucks">B$ 150</span>
+            <span class="currency tickets">TIX 420</span>
+            <a href="#" style="color: #ffb3b3; font-weight: bold;">Sair</a>
+        </div>
+    </header>
+
+    <!-- SUB-MENU DE NAVEGAÇÃO -->
+    <nav class="sub-nav">
+        <ul class="sub-menu">
+            <li><a href="#">Perfil</a></li>
+            <li><a href="#">Avatar</a></li>
+            <li><a href="#">Amigos</a></li>
+            <li><a href="#">Inventário</a></li>
+            <li><a href="#">Grupos</a></li>
+            <li><a href="#">Configurações</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="container">
+        <h1 class="greeting">Olá, Jogador123!</h1>
+
+        <div class="dashboard-grid">
+            
+            <!-- PAINEL ESQUERDO -->
+            <aside>
+                <div class="panel-box">
+                    <div class="panel-header">O teu Avatar</div>
+                    <div class="panel-body">
+                        <div class="avatar-frame">
+                            <div class="avatar-placeholder"></div>
+                        </div>
+                        <button class="btn-classic" style="width: 100%;">Mudar Avatar</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- PAINEL DIREITO -->
+            <section>
+                <div class="panel-box">
+                    <div class="panel-header">Jogos em Destaque</div>
+                    <div class="panel-body">
+                        
+                        <div class="game-item">
+                            <div class="game-thumb" style="background: #27ae60;">SWORD FIGHTS</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold; font-size: 13px;">Sword Fights on the Heights</div>
+                                <div class="game-stats">1,420 jogadores online</div>
+                                <p style="color: #666;">Criado por: <a href="#">BrickMaster</a></p>
+                            </div>
+                            <button class="btn-play">▶ JOGAR</button>
+                        </div>
+
+                        <div class="game-item">
+                            <div class="game-thumb" style="background: #e67e22;">SURVIVAL</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold; font-size: 13px;">Natural Disaster Survival</div>
+                                <div class="game-stats">890 jogadores online</div>
+                                <p style="color: #666;">Criado por: <a href="#">StudioBricks</a></p>
+                            </div>
+                            <button class="btn-play">▶ JOGAR</button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <footer class="footer">
+            <p>Bricks! &copy; 2026 - A tua plataforma de jogos retrô sandbox. Todos os direitos reservados.</p>
+        </footer>
+    </main>
+
+</body>
+</html>
